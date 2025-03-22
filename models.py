@@ -12,7 +12,7 @@ class Base(AsyncAttrs, DeclarativeBase):
 
 
 class User(Base):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     tg_id = mapped_column(BigInteger)
@@ -30,5 +30,3 @@ class Task(Base):
 async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-
-
